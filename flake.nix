@@ -14,8 +14,7 @@
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell.override
           {
-            # Override stdenv in order to change compiler:
-            # stdenv = pkgs.clangStdenv;
+            stdenv = pkgs.clangStdenv;
           }
           {
             packages = with pkgs; [
@@ -29,9 +28,8 @@
               lcov
               vcpkg
               vcpkg-tool
-            ] ++ (if system == "aarch64-darwin" then [ ] else [ gdb ]);
+            ] ++ (if system == "aarch64-darwin" then [ lldb ] else [ gdb ]);
           };
       });
     };
 }
-
