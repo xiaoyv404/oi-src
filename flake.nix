@@ -18,16 +18,10 @@
           }
           {
             packages = with pkgs; [
-              clang-tools
-              cmake
-              codespell
-              conan
-              cppcheck
-              doxygen
-              gtest
-              lcov
-              vcpkg
-              vcpkg-tool
+              gcc
+              clang-tools_17
+              cling
+              python3
             ] ++ (if system == "aarch64-darwin" then [ lldb ] else [ gdb ]);
           };
       });
