@@ -1,7 +1,7 @@
 {
   description = "A Nix-flake-based C/C++ development environment";
 
-  inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
   outputs = inputs:
     let
@@ -19,8 +19,8 @@
           {
             packages = with pkgs; [
               gcc
-              clang-tools_17
-              cling
+              clang
+              clang-tools
               python3
             ] ++ (if system == "aarch64-darwin" then [ lldb ] else [ gdb ]);
           };
